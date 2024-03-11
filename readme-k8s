@@ -9,7 +9,7 @@ ls -l
 
 
 ################# IN the nodes ###############################
-
+sudo su (if not done)
  wget https://raw.githubusercontent.com/akshu20791/Deployment-script/main/k8s-nodes.sh
 ls
 ls -l
