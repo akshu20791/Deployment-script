@@ -1,5 +1,5 @@
 In Master machine: 
-
+sudo su
 wget https://raw.githubusercontent.com/akshu20791/Deployment-script/main/k8s-master.sh
 ls -l
 ls
