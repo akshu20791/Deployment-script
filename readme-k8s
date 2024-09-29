@@ -22,6 +22,14 @@ ls -l
 
 ###########################################################################
 
+RUN THE COMMAND IN NODES:
+
+modprobe br_netfilter
+echo 1 > /proc/sys/net/bridge/bridge-nf-call-iptables
+echo 1 > /proc/sys/net/ipv4/ip_forward
+
+###
+
 After k8s installation is done . we need to connect nodes with the master via tokens 
 
 ### generate token in master:  (run below command in k8s master) 
