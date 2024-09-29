@@ -1,3 +1,5 @@
+CREATE 3 ec2 t3.medium machine with all traffic enabled
+
 In Master machine: 
 sudo su
 wget https://raw.githubusercontent.com/akshu20791/Deployment-script/main/k8s-master.sh
