@@ -10,3 +10,6 @@ sudo apt-get update
 sudo apt-get install grafana
 # Installs the latest Enterprise release:
 sudo apt-get install grafana-enterprise
+sudo service grafana-server start
+
+# now check publicip:3000 
