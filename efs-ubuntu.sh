@@ -3,7 +3,7 @@
 
 sudo apt update -y
 sudo apt install -y nfs-common
-NFS Common is required for mounting EFS.
+#NFS Common is required for mounting EFS.
 
 # Step 2: Install EFS Mount Helper
 sudo apt-get update
