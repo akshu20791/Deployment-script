@@ -50,7 +50,9 @@ Now paste the tokens in the nodes one by one
 
 #################
 
+To validate :
 
+kubectl get nodes    #run this command in kubernetes master machine (controller machine)
 
 
 
