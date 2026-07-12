@@ -1,0 +1,71 @@
+Lab Requirements
+Machine	RAM	CPU	Disk
+Master	2 GB	2	20 GB
+Worker	2 GB	2	20 GB
+ 
+Security Group
+Allow
+22
+6443
+80
+443
+ 
+LAB 2 : Install Master Node
+Login
+ssh ubuntu@MASTER_IP
+ 
+Update Server
+sudo apt update
+
+sudo apt upgrade -y
+ 
+Check OS
+cat /etc/os-release
+Expected
+Ubuntu 24.04 LTS
+ 
+Install k3s
+curl -sfL https://get.k3s.io | sh -
+ 
+Check Service
+sudo systemctl status k3s
+Expected
+active (running)
+ 
+Configure kubectl
+mkdir -p ~/.kube
+
+sudo cp /etc/rancher/k3s/k3s.yaml ~/.kube/config
+
+sudo chown $(id -u):$(id -g) ~/.kube/config
+ 
+Verify
+kubectl get nodes
+Expected
+NAME        STATUS   ROLES
+master      Ready    control-plane
+ 
+
+LAB 3 : Add Worker Node
+Login
+ssh ubuntu@WORKER_IP
+ 
+Install Agent
+First get token from Master
+sudo cat /var/lib/rancher/k3s/server/node-token
+Example
+K10xxxxxxxxxxxxxxxx
+ 
+Find Master IP
+hostname -I
+Suppose
+172.31.4.105
+ 
+Install Worker
+curl -sfL https://get.k3s.io | \
+K3S_URL=https://172.31.4.105:6443 \
+K3S_TOKEN=<TOKEN> \
+sh -
+ 
+Go back to Master
+kubectl get nodes
