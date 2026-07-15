@@ -1,67 +1,68 @@
-Lab Requirements
-Machine	RAM	CPU	Disk
-Master	2 GB	2	20 GB
-Worker	2 GB	2	20 GB
+#Lab Requirements
+#Machine	RAM	CPU	Disk
+#Master	2 GB	2	20 GB
+#Worker	2 GB	2	20 GB
  
-Security Group
-Allow
-22
-6443
-80
-443
+#Security Group
+#Allow
+#22
+#6443
+#80
+#443
  
-LAB 2 : Install Master Node
-Login
-ssh ubuntu@MASTER_IP
+#LAB 2 : Install Master Node
+#Login
+#ssh ubuntu@MASTER_IP
  
-Update Server
+#Update Server
+
 sudo apt update
 
 sudo apt upgrade -y
  
-Check OS
+#Check OS
 cat /etc/os-release
-Expected
-Ubuntu 24.04 LTS
+#Expected
+#Ubuntu 24.04 LTS
  
-Install k3s
+#Install k3s
 curl -sfL https://get.k3s.io | sh -
  
-Check Service
+#Check Service
 sudo systemctl status k3s
-Expected
-active (running)
+#Expected
+#active (running)
  
-Configure kubectl
+#Configure kubectl
 mkdir -p ~/.kube
 
 sudo cp /etc/rancher/k3s/k3s.yaml ~/.kube/config
 
 sudo chown $(id -u):$(id -g) ~/.kube/config
  
-Verify
+#Verify
 kubectl get nodes
-Expected
-NAME        STATUS   ROLES
-master      Ready    control-plane
+#Expected
+#NAME        STATUS   ROLES
+#master      Ready    control-plane
  
 
-LAB 3 : Add Worker Node
-Login
-ssh ubuntu@WORKER_IP
+#LAB 3 : Add Worker Node
+#Login
+#ssh ubuntu@WORKER_IP
  
-Install Agent
-First get token from Master
+#Install Agent
+#First get token from Master
 sudo cat /var/lib/rancher/k3s/server/node-token
-Example
-K10xxxxxxxxxxxxxxxx
+#Example
+#K10xxxxxxxxxxxxxxxx
  
-Find Master IP
+#Find Master IP
 hostname -I
-Suppose
-172.31.4.105
+#Suppose
+#172.31.4.105
  
-Install Worker
+#Install Worker
 curl -sfL https://get.k3s.io | \
 K3S_URL=https://172.31.4.105:6443 \
 K3S_TOKEN=<TOKEN> \
