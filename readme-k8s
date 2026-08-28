@@ -2,7 +2,7 @@ CREATE 3 ec2 t3.medium machine with all traffic enabled
 
 In Master machine: 
 sudo su
-wget https://raw.githubusercontent.com/akshu20791/Deployment-script/main/k8s-master.sh
+wget https://raw.githubusercontent.com/pshakeerbasha/Deployment-script/main/k8s-master.sh
 ls -l
 ls
 chmod 777 k8s-master.sh
@@ -12,7 +12,7 @@ ls -l
 
 ################# IN the nodes ###############################
 sudo su (if not done)
- wget https://raw.githubusercontent.com/akshu20791/Deployment-script/main/k8s-nodes.sh
+ wget https://raw.githubusercontent.com/pshakeerbasha/Deployment-script/main/k8s-nodes.sh
 ls
 ls -l
 chmod 777 k8s-nodes.sh
